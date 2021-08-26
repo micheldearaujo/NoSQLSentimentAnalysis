@@ -113,7 +113,7 @@ Review documents:
 
     {
         "_id": ObjectID(),
-        "restaurant_name": restname,
+        "restaurant_id": restaurant_ID,
         "review_title": title,
         "review_date": date,
         "reviewer_name": reviewer,
@@ -123,14 +123,36 @@ Review documents:
 
 For this particular problem, schema 3 is (probably) the best option, as it is easy to query as a One to One relationship
 and does not suffer from duplicated records of the restaurant data. Besides, it corrects the problem of the schema 2
-by not having to large arrays sizes.
+by not having to large arrays sizes. However, as the size of this dataset will be only a small smaple of the whole restaurants in Brazil, I will keep simple and choose the Schema I for simplicity.
 
-Please refer to the [multiple_restaurants_scraper.py](www.google.com) to view the code in depth.
+Please refer to the [multiple_restaurants_scraper.py](https://github.com/micheldearaujo/NoSQLSentimentAnalysis/blob/main/multiple_restaurants_scraper.py) to view the code in depth.
 
-[Write here the final databse state]
+Later after gathering 30745 reviews of 40 restaurants I realized that I forget a important information, the reviews score. So I went back and scraped the missing data and completed the schema, as you can see bellow.
+
+    {
+        "_id": ObjectID(),
+        "restaurant_name": restName,
+        "rating": rating,
+        "number_of_ratings": numberRatings,
+        "review)title": title,
+        "review_date": date,
+        "reviewer_name": reviewer,
+        "review": rev,
+        "reviews_scores": {
+            "Excellent": int(),
+            "Very Good": int(),
+            "Good": int(),
+            "Bad": int(),
+            "Terrible": int()
+        }
+        "sentiments": sentimentResult
+    }
+
 
 </div>
 <hr>
+
+This amount of information can provides us with some insights about the food market in Brazil.
 
 ## Querying data for analysis
 
