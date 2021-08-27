@@ -158,7 +158,7 @@ Later after gathering 30745 reviews of 40 restaurants it was realized that was f
 </div>
 <hr>
 
-This amount of information can provides us with some insights about the food market in Brazil.
+This amount of information can provide some insights about the food market in Brazil.
 
 ## Exploratory Data Analysis
 
@@ -167,17 +167,88 @@ What kind of answers can we get from this dataset? Here are some basic questions
 ### 1. How many reviews each restaurant has?
 
 
+    [
+        {"$group": {"_id": "$restaurant_name",
+                            "Reviews": {"$sum": 1}}},
+        {"$sort": {"Reviews": -1}},
+        {"$limit": 20}
+    ]
+
+[
+  { _id: 'Coco Bambu Recife', Reviews: 5605 },
+  { _id: 'Camarada Camarão - Shopping Recife', Reviews: 2592 },
+  { _id: 'Chica Pitanga', Reviews: 2587 },
+  { _id: 'Camarada Camarao - RioMar Recife', Reviews: 2111 },
+  { _id: 'Bargaço', Reviews: 1765 },
+  { _id: 'Outback Steakhouse - Shopping RioMar Recife', Reviews: 1331 },
+  { _id: 'Bode Do Nô', Reviews: 1177 },
+  { _id: 'Churrascaria Ponteio', Reviews: 979 },
+  { _id: 'Churrascaria Sal e Brasa Recife', Reviews: 846 },
+  { _id: 'Parraxaxa - Boa Viagem', Reviews: 833 },
+  { _id: 'Guaiamum Gigante', Reviews: 786 },
+  { _id: 'Parraxaxá', Reviews: 767 },
+  { _id: 'Ilha dos Navegantes', Reviews: 703 },
+  { _id: 'Spettus Steak House', Reviews: 656 },
+  { _id: 'Ça Va', Reviews: 611 },
+  { _id: 'Pobre Juan - Recife', Reviews: 570 },
+  { _id: 'Ilha Camarões', Reviews: 567 },
+  { _id: 'Dom Ferreira Forneria', Reviews: 546 },
+  { _id: 'Castelus Restaurante', Reviews: 512 },
+  { _id: 'Mingus', Reviews: 410 }
+]
+
 
 ### 2. How is the overall rating distributed?
 
+[
+    {"$group": {"_id": "$rating",
+                "Frequency": {"$sum": 1}}},
+]
+
+And the result is:
+
+    [
+        { _id: 4.5, Frequency: 16515 },                                                                                        
+        { _id: 4, Frequency: 3260 },
+        { _id: 5, Frequency: 10971 }
+    ]  
 
 ### 3. Who are the top 10 most interactive reviewers?
 
+This question can be answered with a simple aggregation pipeline using the $group, $sort and $limit:
+
+[
+    {"$group": {"_id": "$reviewer_Name",
+                        "Reviews": {"$sum": 1}}},
+    {"$sort": {"Reviews":-1}},
+    {"$limit": 10}
+]
+
+Returns:
+
+    [
+        { _id: 'enriqueolivierjr', Reviews: 33 },
+        { _id: 'marciapir', Reviews: 30 },
+        { _id: 'Lucia T', Reviews: 23 },
+        { _id: 'Aalexei', Reviews: 20 },
+        { _id: 'Heloisan', Reviews: 20 },
+        { _id: 'yonnat', Reviews: 19 },
+        { _id: 'ARTHUR M', Reviews: 19 },
+        { _id: 'brunosvasconcelos', Reviews: 17 },
+        { _id: 'solangeluna8', Reviews: 17 },
+        { _id: 'Gabriela C', Reviews: 17 }                                                                                    
+    ]
+
+A simple dashboard using MongoDB charts summarises very well those answers:
+
+[Click here to see the MongoDB chats Dashbord.](https://charts.mongodb.com/charts-m001-sfvgg/public/dashboards/4fafe90c-6c6a-4fc9-87ae-924cfe81d4c7)
 
 Moreover, it is also possible to ask questions related to the content of the reviews:
 
-4. How the reviews scores affects the overall rating of the restaurant?
-5. How the sentiment of reviews affects the overall rating?
+4. What are the most common words in the reviews titles?
+5. What are the most common words in the reviews text?
+6. How the reviews scores affects the overall rating of the restaurant?
+7. How the sentiment of reviews affects the overall rating?
 
 Both this questions can be answered using Machine Learning methods, such as Random Forest and Logist Regression. To answer the fifth question we will need some Natural Language processing tools to extract the sentiment of each review and then compare to the overall rating.
 
