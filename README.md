@@ -243,7 +243,7 @@ Returns:
 
 A simple dashboard using MongoDB charts summarises very well those answers:
 
-[Click here to see the MongoDB chats Dashbord.](https://charts.mongodb.com/charts-m001-sfvgg/public/dashboards/4fafe90c-6c6a-4fc9-87ae-924cfe81d4c7)
+[Click here to see the MongoDB charts Dashbord.](https://charts.mongodb.com/charts-m001-sfvgg/public/dashboards/4fafe90c-6c6a-4fc9-87ae-924cfe81d4c7)
 
 Moreover, it is also possible to ask questions related to the content of the reviews:
 
