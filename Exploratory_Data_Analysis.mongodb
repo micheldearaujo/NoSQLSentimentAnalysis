@@ -1,0 +1,24 @@
+// Let's start the exploration!
+
+// Connecting to the database
+use('restaurant_reviews')
+
+// Lets take a look the some documents
+db.reviews_I.find().limit(5);
+
+// How many documents we have?
+db.reviews_I.find().count();
+
+// We have gathered 30746 documents. That is 30746 reviews. It seems a lot of data, but this is
+// only a small sample of the total of restaurants that must exist in Brazil.
+// How many restaurants and how many review each restaurant has in this dataset?
+// To answer that question in need to use the MongoDB Aggregation Framekwork with the $group operator
+
+
+db.reviews_I.aggregate([
+    {"$group": {"_id": "$restaurant_name",
+                        "reviews": {"$sum":1}}}
+]);
+
+// There are 40 restaurants in our sample data, and the number of reviews that goes from 129 to 3792.
+
