@@ -1,6 +1,6 @@
 <div>
 
-# NoSQL Sentiment Analysis
+# NoSQL Sentiment Analysis with Python and MongoDB
 Hi there! This is a sentiment analysis project. Its objective is trying to predict the overall rating of restaurants based on the reviews given by its clients on [Tripadvisor](https://www.tripadvisor.com.br/) website.
 
 </div>
@@ -129,11 +129,11 @@ For this particular problem, schema 3 is (probably) the best option, as it is ea
 and does not suffer from duplicated records of the restaurant data. Besides, it corrects the problem of the schema 2
 by not having to large arrays sizes.
 
-However, as the size of this dataset will be only a small smaple of the whole restaurants in Brazil, I will keep simple and choose the schema I for simplicity.
+However, as the size of this dataset will be only a small smaple of the whole restaurants in Brazil, it will be kept simple and choose the schema I for simplicity.
 
 Please refer to the [multiple_restaurants_scraper.py](https://github.com/micheldearaujo/NoSQLSentimentAnalysis/blob/main/multiple_restaurants_scraper.py) to view the code in depth.
 
-Later after gathering 30745 reviews of 40 restaurants I realized that I forgot a important information, the reviews score. So I went back and scraped the missing data and completed the schema, as you can see bellow.
+Later after gathering 30745 reviews of 40 restaurants it was realized that was forgotten a important information, the reviews score. So it was went back and scraped the missing data and completed the schema, as can be seen bellow.
 
     {
         "_id": ObjectID(),
@@ -164,9 +164,22 @@ This amount of information can provides us with some insights about the food mar
 
 What kind of answers can we get from this dataset? Here are some basic questions to make:
 
-1. How many reviews each restaurant has?
+### 1. How many reviews each restaurant has?
 
-There two basic types of questions to make about this dataset: How the reviews scores affect the overall rating of the restaurant and how the sentiment of reviews affects the overall rating.
-Both this questions can be answered using Machine Learning methods, such as Random Forest and Logist Regression. To answer the second question we will need some Natural Language processing tools to extract the sentiment of each review and then compare to the overall rating.
-This task seems to be complex and can take quite some time!
+
+
+### 2. How is the overall rating distributed?
+
+
+### 3. Who are the top 10 most interactive reviewers?
+
+
+Moreover, it is also possible to ask questions related to the content of the reviews:
+
+4. How the reviews scores affects the overall rating of the restaurant?
+5. How the sentiment of reviews affects the overall rating?
+
+Both this questions can be answered using Machine Learning methods, such as Random Forest and Logist Regression. To answer the fifth question we will need some Natural Language processing tools to extract the sentiment of each review and then compare to the overall rating.
+
+
 
