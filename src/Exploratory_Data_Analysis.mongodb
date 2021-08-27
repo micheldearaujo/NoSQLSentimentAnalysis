@@ -22,3 +22,10 @@ db.reviews_I.aggregate([
 
 // There are 40 restaurants in our sample data, and the number of reviews that goes from 129 to 3792.
 
+
+// Who are the top 10 reviewers1?
+
+db.reviews_I.aggregate([
+    {"$group": {"_id": "$reviewer_Name",
+                        "Reviews": {"$sum": 1}}}
+]);
