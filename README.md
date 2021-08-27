@@ -174,36 +174,38 @@ What kind of answers can we get from this dataset? Here are some basic questions
         {"$limit": 20}
     ]
 
-[
-  { _id: 'Coco Bambu Recife', Reviews: 5605 },
-  { _id: 'Camarada Camarão - Shopping Recife', Reviews: 2592 },
-  { _id: 'Chica Pitanga', Reviews: 2587 },
-  { _id: 'Camarada Camarao - RioMar Recife', Reviews: 2111 },
-  { _id: 'Bargaço', Reviews: 1765 },
-  { _id: 'Outback Steakhouse - Shopping RioMar Recife', Reviews: 1331 },
-  { _id: 'Bode Do Nô', Reviews: 1177 },
-  { _id: 'Churrascaria Ponteio', Reviews: 979 },
-  { _id: 'Churrascaria Sal e Brasa Recife', Reviews: 846 },
-  { _id: 'Parraxaxa - Boa Viagem', Reviews: 833 },
-  { _id: 'Guaiamum Gigante', Reviews: 786 },
-  { _id: 'Parraxaxá', Reviews: 767 },
-  { _id: 'Ilha dos Navegantes', Reviews: 703 },
-  { _id: 'Spettus Steak House', Reviews: 656 },
-  { _id: 'Ça Va', Reviews: 611 },
-  { _id: 'Pobre Juan - Recife', Reviews: 570 },
-  { _id: 'Ilha Camarões', Reviews: 567 },
-  { _id: 'Dom Ferreira Forneria', Reviews: 546 },
-  { _id: 'Castelus Restaurante', Reviews: 512 },
-  { _id: 'Mingus', Reviews: 410 }
-]
+The answer is: 
+
+    [
+    { _id: 'Coco Bambu Recife', Reviews: 5605 },
+    { _id: 'Camarada Camarão - Shopping Recife', Reviews: 2592 },
+    { _id: 'Chica Pitanga', Reviews: 2587 },
+    { _id: 'Camarada Camarao - RioMar Recife', Reviews: 2111 },
+    { _id: 'Bargaço', Reviews: 1765 },
+    { _id: 'Outback Steakhouse - Shopping RioMar Recife', Reviews: 1331 },
+    { _id: 'Bode Do Nô', Reviews: 1177 },
+    { _id: 'Churrascaria Ponteio', Reviews: 979 },
+    { _id: 'Churrascaria Sal e Brasa Recife', Reviews: 846 },
+    { _id: 'Parraxaxa - Boa Viagem', Reviews: 833 },
+    { _id: 'Guaiamum Gigante', Reviews: 786 },
+    { _id: 'Parraxaxá', Reviews: 767 },
+    { _id: 'Ilha dos Navegantes', Reviews: 703 },
+    { _id: 'Spettus Steak House', Reviews: 656 },
+    { _id: 'Ça Va', Reviews: 611 },
+    { _id: 'Pobre Juan - Recife', Reviews: 570 },
+    { _id: 'Ilha Camarões', Reviews: 567 },
+    { _id: 'Dom Ferreira Forneria', Reviews: 546 },
+    { _id: 'Castelus Restaurante', Reviews: 512 },
+    { _id: 'Mingus', Reviews: 410 }
+    ]
 
 
 ### 2. How is the overall rating distributed?
 
-[
-    {"$group": {"_id": "$rating",
-                "Frequency": {"$sum": 1}}},
-]
+    [
+        {"$group": {"_id": "$rating",
+                    "Frequency": {"$sum": 1}}},
+    ]
 
 And the result is:
 
@@ -217,12 +219,12 @@ And the result is:
 
 This question can be answered with a simple aggregation pipeline using the $group, $sort and $limit:
 
-[
-    {"$group": {"_id": "$reviewer_Name",
-                        "Reviews": {"$sum": 1}}},
-    {"$sort": {"Reviews":-1}},
-    {"$limit": 10}
-]
+    [
+        {"$group": {"_id": "$reviewer_Name",
+                            "Reviews": {"$sum": 1}}},
+        {"$sort": {"Reviews":-1}},
+        {"$limit": 10}
+    ]
 
 Returns:
 
