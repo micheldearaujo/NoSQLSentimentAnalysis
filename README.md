@@ -24,7 +24,7 @@ sentiment analysis of its reviews. In the figure bellow you can see the overview
 ### Sentiment Analysis
 
 Sentiment analysis, also known as opinion mining, is a natural language processing technique used to determine whether
-a text is positive, negative or neutral. It also possible to find other sentiments, like anger and sadness.
+a text is positive, negative or neutral. It is also possible to find other sentiments, like anger and sadness.
 Therefore, this process has become crucial when business want to know better how their products are performing.
 
 #### Why is it important?
@@ -162,12 +162,14 @@ Later after gathering 30745 reviews of 40 restaurants we realized that was forgo
 
 In the next section we will start explore this data using Python.
 
-## Exploratory Data Analysis
+## Answering some basic questions - Exploratory Data Analysis
 
 What kind of answers can we get from this dataset? Here are some basic questions to make:
 
 ### 1. How many reviews each restaurant has?
 
+When building a Machine Learning model, it is essential to have a balanced dataset. This will ensure that our model is not biased. We can answer this question
+using the following MongoDB query:
 
     [
         {"$group": {"_id": "$restaurant_name",
@@ -175,8 +177,8 @@ What kind of answers can we get from this dataset? Here are some basic questions
         {"$sort": {"Reviews": -1}},
         {"$limit": 20}
     ]
-``
-The answer is: 
+
+The following result is showed to us:
 
     [
     { _id: 'Coco Bambu Recife', Reviews: 5605 },
@@ -201,15 +203,21 @@ The answer is:
     { _id: 'Mingus', Reviews: 410 }
     ]
 
+We conclude that there is a huge gap between the biggest and the smallest number of reviews. The restaurant with most reviewed is the Coco Bambu Recife,
+with 5605 reviews, against the Mingus restaurant, holding only 410 reviews.
+
 
 ### 2. How is the overall rating distributed?
+
+This question has a similar importance as the last one. The overall rating is our target variable, so it would be great if the rating values were well
+distributed. For answering this question we need to create a grouping statement in the "rating" variable, and count the occurrences.
 
     [
         {"$group": {"_id": "$rating",
                     "Frequency": {"$sum": 1}}},
     ]
 
-And the result is:
+The output:
 
     [
         { _id: 4.5, Frequency: 16515 },                                                                                        
@@ -217,8 +225,12 @@ And the result is:
         { _id: 5, Frequency: 10971 }
     ]  
 
+This is not the most well distributed variable ever. The "4.0" rating is quite unpopular, and the majority of the reviews are gathered in the "4.5" and "5.0".
+
+
 ### 3. Who are the top 10 most interactive reviewers?
 
+This is not a key-question to our problem, but it would be nice to know who are the most interactive users.
 This question can be answered with a simple aggregation pipeline using the $group, $sort and $limit:
 
     [
@@ -243,9 +255,13 @@ Returns:
         { _id: 'Gabriela C', Reviews: 17 }                                                                                    
     ]
 
+We see that some users are quite active in TripAdvisor. The first one, 'enriqueolivierjr' has 33 reviews out of 40 restaurants in our database.
+This query shows us that there is a group of users that uses to go to restaurants with a high frequency.
+
+
 A simple dashboard using MongoDB charts summarises very well those answers:
 
-[Click here to see the MongoDB charts Dashbord.](https://charts.mongodb.com/charts-m001-sfvgg/public/dashboards/4fafe90c-6c6a-4fc9-87ae-924cfe81d4c7)
+[Click here to see the MongoDB charts Dashboard.](https://charts.mongodb.com/charts-m001-sfvgg/public/dashboards/4fafe90c-6c6a-4fc9-87ae-924cfe81d4c7)
 
 Moreover, it is also possible to ask questions related to the content of the reviews:
 
@@ -254,7 +270,12 @@ Moreover, it is also possible to ask questions related to the content of the rev
 6. How the reviews scores affects the overall rating of the restaurant?
 7. How the sentiment of reviews affects the overall rating?
 
-Both this questions can be answered using Machine Learning methods, such as Random Forest and Logist Regression. To answer the fifth question we will need some Natural Language processing tools to extract the sentiment of each review and then compare to the overall rating.
+Both questions 6 and 7 can be answered using Machine Learning methods, such as Random Forest and Logistic Regression. To answer the questions 4 and 5 we will need Natural Language processing tools to extract the sentiment of each review and then compare to the overall rating.
 
 
+### 4. What are the most common words in the reviews titles?
 
+### 5. What are the most common words in the reviews text?
+
+
+## Creating a Machine Learning model to predict the restaurant rating
