@@ -1,29 +1,31 @@
 <div>
 
-# NoSQL Sentiment Analysis with Python and MongoDB
-Hi there! This is a sentiment analysis project. Its objective is trying to predict the overall rating of restaurants based on the reviews given by its clients on [Tripadvisor](https://www.tripadvisor.com.br/) website.
+# Improving restaurants performance using Sentiment Analysis
 
 </div>
-<hr>
 
 <div>
 
 ## Introduction
 
-In this project will be built a NoSQL database that stores reviews of restaurants scraped from the web and will be the base for querying data to create a Machine Learning classifier that tries to predict the overall rating of a restaurant based on the sentiment analysis of its reviews. In the figure bellow you can see the overview of the project workflow.
+In this project, we will build a NoSQL database that stores reviews of restaurants scraped from the web and will be the base for
+querying data to create a Machine Learning classifier that tries to predict the overall rating of a restaurant based on the
+sentiment analysis of its reviews. In the figure bellow you can see the overview of the project workflow.
 
 
 <p align="center">
 <img width="471" height="233" src="images/projectFlowChart.png">
 
 </div>
-<hr>
+
 
 <div>
 
 ### Sentiment Analysis
 
-Sentiment analysis, also known as opinion mining, is a natural language processing technique used to determine whether a text is positive, negative or neutral. It also possible to find other sentiments, like anger and sadness. Therefore, this process has become crucial when business want to know better how their products are performing.
+Sentiment analysis, also known as opinion mining, is a natural language processing technique used to determine whether
+a text is positive, negative or neutral. It also possible to find other sentiments, like anger and sadness.
+Therefore, this process has become crucial when business want to know better how their products are performing.
 
 #### Why is it important?
 
@@ -74,7 +76,7 @@ Schema I - One to One:
     }
 
 As there will be thousands of restaurants and each restaurant have hundreds of reviews, this schema will
-lead us in a collection with a number of documents that goesfrom a hundred thousands to millions.
+lead us in a collection with a number of documents that goes from a hundred thousands to millions.
 We also will be able to query for each restaurant isolated, reviewer and sentiments.
 
 The second schema uses arrays to store the reviews. In this schema, each document will represent one
@@ -129,11 +131,11 @@ For this particular problem, schema 3 is (probably) the best option, as it is ea
 and does not suffer from duplicated records of the restaurant data. Besides, it corrects the problem of the schema 2
 by not having to large arrays sizes.
 
-However, as the size of this dataset will be only a small smaple of the whole restaurants in Brazil, it will be kept simple and choose the schema I for simplicity.
+However, as the size of this dataset will be only a small sample of the whole restaurants in Brazil, it will be kept simple and choose the schema I for simplicity.
 
-Please refer to the [multiple_restaurants_scraper.py](https://github.com/micheldearaujo/NoSQLSentimentAnalysis/blob/main/multiple_restaurants_scraper.py) to view the code in depth.
+Please refer to the [multiple_restaurants_scraper.py](https://github.com/micheldearaujo/NoSQLSentimentAnalysis/blob/main/src/multiple_restaurants_scraper.py) to view the code in depth.
 
-Later after gathering 30745 reviews of 40 restaurants it was realized that was forgotten a important information, the reviews score. So it was went back and scraped the missing data and completed the schema, as can be seen bellow.
+Later after gathering 30745 reviews of 40 restaurants we realized that was forgotten valuable information, the reviews score. So we went back and scraped the missing data and completed the schema, as can be seen bellow.
 
     {
         "_id": ObjectID(),
@@ -158,7 +160,7 @@ Later after gathering 30745 reviews of 40 restaurants it was realized that was f
 </div>
 <hr>
 
-This amount of information can provide some insights about the food market in Brazil.
+In the next section we will start explore this data using Python.
 
 ## Exploratory Data Analysis
 
@@ -173,7 +175,7 @@ What kind of answers can we get from this dataset? Here are some basic questions
         {"$sort": {"Reviews": -1}},
         {"$limit": 20}
     ]
-
+``
 The answer is: 
 
     [
