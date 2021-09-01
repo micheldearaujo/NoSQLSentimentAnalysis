@@ -274,6 +274,15 @@ Both questions 6 and 7 can be answered using Machine Learning methods, such as R
 
 
 ### 4. What are the most common words in the reviews titles?
+In order to answer that question it will be necessary to concatenate all the reviews titles in one string and then 
+perform a Term Frequency count in those words. There are two ways of answering that question:
+
+<p align="center">
+<img width="349" height="181" src="images/wordcloud1.png">
+
+
+<p align="center">
+<img width="892" height="501" src="images/words_bar1.png">
 
 ### 5. What are the most common words in the reviews text?
 
