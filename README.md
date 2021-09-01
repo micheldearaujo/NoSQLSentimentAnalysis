@@ -4,7 +4,7 @@
 
 
 <p align="center">
-<img width="3999" height="2999" src="images/unplash_markus_winkler.jpg">
+<img width="892" height="501" src="images/unplash_markus_winkler.jpg">
 
 </div>
 
@@ -274,7 +274,8 @@ Moreover, it is also possible to ask questions related to the content of the rev
 6. How the reviews scores affects the overall rating of the restaurant?
 7. How the sentiment of reviews affects the overall rating?
 
-Both questions 6 and 7 can be answered using Machine Learning methods, such as Random Forest and Logistic Regression. To answer the questions 4 and 5 we will need Natural Language processing tools to extract the sentiment of each review and then compare to the overall rating.
+Both questions 6 and 7 can be answered using Machine Learning methods, such as Random Forest and Logistic Regression. To answer the questions 4 
+and 5 we will need Natural Language processing tools to extract the sentiment of each review and then compare to the overall rating.
 
 
 ### 4. What are the most common words in the reviews titles?
@@ -291,6 +292,11 @@ and
 
 <p align="center">
 <img width="892" height="501" src="images/words_bar1.png">
+
+Great! This word cloud shows us that the majority of the reviews titles relates to the rating of the restaurant. Being "Excellent" the title most 
+attributed to the user experience. Then comes "Good", "Best", "Wonderful". The other group of titles relates to the type of meal that users were 
+having, like "Lunch" and "Dinner". It is also possible to create a bar plot to show the exact frequency of the words. For that, we have to count 
+the frequency of each word, also known as Term Frequency.
 
 ### 5. What are the most common words in the reviews text?
 
