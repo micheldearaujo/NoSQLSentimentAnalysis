@@ -317,6 +317,8 @@ Well, if you know some portuguese you will realize that the majority of those wo
 As we saw that the amount of negative reviews is quite low, the "positive" word cloud problably will not be that much different from the general word cloud that we have already made. So, let's continue with the negative sentiments and make a bar plot with the frequencies.
 
 <p align="center">
-<img width="892" height="501" src="images/words_bar1.png">
+<img width="892" height="501" src="images/words_bar2.png">
 
 ## Creating a Machine Learning model to predict the restaurant rating
+
+Let's end this notebook here and let the Machine Learning model section to a separated notebook. See the [Rating Predictor]().
