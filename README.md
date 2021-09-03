@@ -277,6 +277,7 @@ Moreover, it is also possible to ask questions related to the content of the rev
 Both questions 6 and 7 can be answered using Machine Learning methods, such as Random Forest and Logistic Regression. To answer the questions 4 
 and 5 we will need Natural Language processing tools to extract the sentiment of each review and then compare to the overall rating.
 
+For the in-depth code, see the [Exploratory Notebook](https://github.com/micheldearaujo/NoSQLSentimentAnalysis/blob/main/src/Exploratory_Analysis.ipynb).
 
 ### 4. What are the most common words in the reviews titles?
 In order to answer that question it will be necessary to concatenate all the reviews titles in one string and then 
@@ -311,7 +312,7 @@ a smaller number of extremely positive reviews and slightly positive. We have a 
 sentiments. This is an interesting result, it seems that the majority of peoples experiences with restaurants are pleasant. Also, the there is a peak in the reviews with sentiment polarity close to 0 positively. This tells us that a lot of the reviews does not carry any complement of complaining about the user experience. This reviews are probably just describing the experience in a neutral form.
 
 <p align="center">
-<img width="400" height="200" src="images/wordcloud_neg.png">
+<img width="400" height="220" src="images/wordcloud_neg.png">
 
 Well, if you know some portuguese you will realize that the majority of those words are not actually negative. There is some word has appears with low frequency with negative meaning, such as "bad", "therefore", "because".
 As we saw that the amount of negative reviews is quite low, the "positive" word cloud problably will not be that much different from the general word cloud that we have already made. So, let's continue with the negative sentiments and make a bar plot with the frequencies.
@@ -321,4 +322,4 @@ As we saw that the amount of negative reviews is quite low, the "positive" word 
 
 ## Creating a Machine Learning model to predict the restaurant rating
 
-Let's end this notebook here and let the Machine Learning model section to a separated notebook. See the [Rating Predictor]().
+Let's end this notebook here and let the Machine Learning model section to a separated notebook. See the [Rating Predictor](https://github.com/micheldearaujo/NoSQLSentimentAnalysis/blob/main/src/Rating%20Predictor.ipynb).
