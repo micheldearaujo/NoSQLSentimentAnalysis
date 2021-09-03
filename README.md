@@ -4,7 +4,7 @@
 
 
 <p align="center">
-<img width="892" height="501" src="images/unplash_markus_winkler.jpg">
+<img width="692" height="401" src="images/unplash_markus_winkler.jpg">
 
 </div>
 
@@ -300,5 +300,23 @@ the frequency of each word, also known as Term Frequency.
 
 ### 5. What are the most common words in the reviews text?
 
+First, what looks like the sentiment polarity distribution? The sentiment analyzer from TextBlob results a value from -1 to 1 to a sentence.
+-1 stands for very negative sentiments, 0 to neutral and +1 to very positive sentiments.
+
+<p align="center">
+<img width="892" height="501" src="images/sent_dist.png">
+
+The reviews sentiments follows a normal distribution centered at the 0.5! This means that in average, the review sentiments are just positive, with 
+a smaller number of extremely positive reviews and slightly positive. We have a peak of neutral sentiments at 0, and some residual slightly negative 
+sentiments. This is an interesting result, it seems that the majority of peoples experiences with restaurants are pleasant. Also, the there is a peak in the reviews with sentiment polarity close to 0 positively. This tells us that a lot of the reviews does not carry any complement of complaining about the user experience. This reviews are probably just describing the experience in a neutral form.
+
+<p align="center">
+<img width="400" height="200" src="images/wordcloud_neg.png">
+
+Well, if you know some portuguese you will realize that the majority of those words are not actually negative. There is some word has appears with low frequency with negative meaning, such as "bad", "therefore", "because".
+As we saw that the amount of negative reviews is quite low, the "positive" word cloud problably will not be that much different from the general word cloud that we have already made. So, let's continue with the negative sentiments and make a bar plot with the frequencies.
+
+<p align="center">
+<img width="892" height="501" src="images/words_bar1.png">
 
 ## Creating a Machine Learning model to predict the restaurant rating
